@@ -19,6 +19,16 @@ router.post('/items', function(req, res, next) {
     }
   })
 });
-  
+
+router.delete('/item/:item_id', function(req, res) {
+  console.log("IN DELETE ROUTE");
+  ferretList.remove({
+    _id: req.params.item_id
+  }, function(err, item) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Successfully deleted'});
+  });
+});
 
 module.exports = router;
