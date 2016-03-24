@@ -6,9 +6,9 @@ var ferretListSchema = new mongoose.Schema({
   item: String,
   contactInfo: String,
   category: String,
-  date: Date,
+  date: String,
   condition: String,
   description: String,
   photo: String
 });
-mongoose.model('ferretList', ferretListSchema);
+mongoose.model('ferretList', ferretListSchema, 'items');
