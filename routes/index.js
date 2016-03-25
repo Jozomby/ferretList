@@ -44,11 +44,11 @@ router.post('/items', function(req, res, next) {
 		}
 		res.json(item);
 	});
-}
+});
 
 /* UPDATE an item */
 router.post('/items:item_id', function(req, res, next) {
 	console.log("IN UPDATE ITEM");
-}
+});
 
 module.exports = router;
