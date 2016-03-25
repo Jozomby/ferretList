@@ -8,7 +8,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/items', function(req, res, next) {
+/* GET items */
+//should be get? not post?
+router.get('/items', function(req, res, next) {
   console.log(req.body);
   var terms = req.body;
   ferretList.find(terms, function(err,items) {
@@ -20,6 +22,7 @@ router.post('/items', function(req, res, next) {
   })
 });
 
+/* DELETE an item */
 router.delete('/item/:item_id', function(req, res) {
   console.log("IN DELETE ROUTE");
   ferretList.remove({
@@ -30,5 +33,22 @@ router.delete('/item/:item_id', function(req, res) {
       res.json({ message: 'Successfully deleted'});
   });
 });
+
+/* POST an item */
+router.post('/items', function(req, res, next) {
+	console.log("IN POST ITEM");
+	var item = new ferretList(req.body);
+	item.save(function(err, item){
+		if(err){
+			return next(err);
+		}
+		res.json(item);
+	});
+}
+
+/* UPDATE an item */
+router.post('/items:item_id', function(req, res, next) {
+	console.log("IN UPDATE ITEM");
+}
 
 module.exports = router;
