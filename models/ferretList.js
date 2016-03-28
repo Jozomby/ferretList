@@ -11,4 +11,10 @@ var ferretListSchema = new mongoose.Schema({
   description: String,
   photo: String
 });
+
+ferretListSchema.methods.change = function(cb) {
+	console.log("in method");
+	this.save(cb);
+};
+
 mongoose.model('ferretList', ferretListSchema, 'items');

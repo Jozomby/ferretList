@@ -37,18 +37,27 @@ router.delete('/item/:item_id', function(req, res) {
 /* POST an item */
 router.post('/items', function(req, res, next) {
 	console.log("IN POST ITEM");
+	console.log(req.body);
 	var item = new ferretList(req.body);
+	console.log(item.price);
 	item.save(function(err, item){
 		if(err){
 			return next(err);
 		}
-		res.json(item);
+		res.sendStatus(200);
 	});
 });
 
 /* UPDATE an item */
-router.post('/items:item_id', function(req, res, next) {
+router.put('/items:ferretList', function(req, res, next) {
 	console.log("IN UPDATE ITEM");
+	req.ferretList.change(function(err, ferretList){
+//		console.log("in update???");
+		if (err) {
+			return next(err);
+		} 
+		res.sendStatus(200);
+	});
 });
 
 module.exports = router;
