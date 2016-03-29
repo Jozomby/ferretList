@@ -9,8 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET items */
-//should be get? not post?
-router.get('/items', function(req, res, next) {
+router.post('/items', function(req, res, next) {
   console.log(req.body);
   var terms = req.body;
   ferretList.find(terms, function(err,items) {
@@ -35,9 +34,8 @@ router.delete('/item/:item_id', function(req, res) {
 });
 
 /* POST an item */
-router.post('/items', function(req, res, next) {
+router.post('/item', function(req, res, next) {
 	console.log("IN POST ITEM");
-	console.log(req.body);
 	var item = new ferretList(req.body);
 	console.log(item.price);
 	item.save(function(err, item){
@@ -49,7 +47,7 @@ router.post('/items', function(req, res, next) {
 });
 
 /* UPDATE an item */
-router.put('/items:ferretList', function(req, res, next) {
+router.put('/item:ferretList', function(req, res, next) {
 	console.log("IN UPDATE ITEM");
 	req.ferretList.change(function(err, ferretList){
 //		console.log("in update???");
@@ -59,5 +57,10 @@ router.put('/items:ferretList', function(req, res, next) {
 		res.sendStatus(200);
 	});
 });
+
+router.post('/search', function(req, res, next) {
+	console.log("IN SEARCH");
+	res.sendStatus(200);
+}
 
 module.exports = router;
