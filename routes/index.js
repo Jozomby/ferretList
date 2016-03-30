@@ -112,7 +112,7 @@ router.get('/search', function(req, res, next) {
 				
 				
 				if(found == 1) {
-					jsonresult.push({item:items[i]});
+					jsonresult.push(items[i]);
 				}
 			}
 			res.status(200).json(jsonresult);
