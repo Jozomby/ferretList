@@ -37,7 +37,6 @@ router.delete('/item/:item_id', function(req, res) {
 router.post('/item', function(req, res, next) {
 	console.log("IN POST ITEM");
 	var item = new ferretList(req.body);
-	console.log(item.price);
 	item.save(function(err, item){
 		if(err){
 			return next(err);
@@ -50,7 +49,6 @@ router.post('/item', function(req, res, next) {
 router.put('/item:ferretList', function(req, res, next) {
 	console.log("IN UPDATE ITEM");
 	req.ferretList.change(function(err, ferretList){
-//		console.log("in update???");
 		if (err) {
 			return next(err);
 		} 
@@ -64,12 +62,6 @@ router.get('/search', function(req, res, next) {
 	var category = req.query.category;
 	var location = req.query.location;
 	var price = req.query.price;
-	
-	console.log("description: " + description);
-	console.log("condition: " + condition);
-	console.log("category: " + category);
-	console.log("location: " + location);
-	console.log("price: " + price);
 	
 	var que = new RegExp(description);
 	var con = new RegExp(condition);
@@ -123,7 +115,6 @@ router.get('/search', function(req, res, next) {
 					jsonresult.push({item:items[i]});
 				}
 			}
-			console.log(jsonresult);
 			res.status(200).json(jsonresult);
 		}
 	})
