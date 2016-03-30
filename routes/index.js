@@ -60,7 +60,9 @@ router.put('/item:ferretList', function(req, res, next) {
 
 router.post('/search', function(req, res, next) {
 	console.log("IN SEARCH");
+	var myRe = new RegExp("^" + req.query.q);
+	console.log(myRe);
 	res.sendStatus(200);
-}
+});
 
 module.exports = router;
