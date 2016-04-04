@@ -1,0 +1,8 @@
+curl "localhost:3000/search?price=600&q=this&category=none&condition=old&location=here"
+
+queries:
+q: searches description and item name
+price: if listed price is below or equal to query, search will accept
+category: matches category
+condition: matches condition
+location: matches location
