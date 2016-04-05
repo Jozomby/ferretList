@@ -33,6 +33,13 @@ router.delete('/item/:item_id', function(req, res) {
   });
 });
 
+router.get('/all', function(req, res, next) {
+  ferretList.find(function(err, items){
+    if(err){ return next(err); }
+    res.json(items);
+  });
+});
+
 /* POST an item */
 router.post('/item', function(req, res, next) {
 	console.log("IN POST ITEM");
