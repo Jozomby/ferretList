@@ -1,7 +1,5 @@
 angular.module('ferretList', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ferretList').controller('MainCtrl', [
-	'$scope', '$http',
-	function($scope,$http){
+angular.module('ferretList').controller('MainCtrl', function($scope,$http,$uibModal,$log){
 		$scope.test = "Hello World!";
 		var partial = "{location: 'Provo'}";
 		$scope.getItems = function(partial) {
@@ -11,8 +9,32 @@ angular.module('ferretList').controller('MainCtrl', [
 			});
 		};
 		$scope.getItems();
-	}
-]);
+	
+	$scope.animationsEnabled = true;
+	$scope.item = ['bob'];
+	$scope.open = function (item) {
+		console.log(item);
+		console.log("FRED");
+		$scope.item = item;
+		var modalInstance = $uibModal.open({
+			animation: $scope.animationsEnabled,
+			templateUrl: 'viewItem.html',
+			controller: 'ModalInstanceCtrl',
+			scope: $scope,
+			resolve: {
+				items: function () {
+					return $scope.items;
+				}
+			}
+		});
+		modalInstance.result.then(function (selectedItem) {
+			$scope.selected = selectedItem;
+		}, function () {
+			$log.info('Modal dismissed at: ' + new Date());
+		});
+	};
+
+});
 
 angular.module('ferretList').controller('ModalCtrl', function ($scope, $uibModal, $log) {
 

@@ -11,14 +11,30 @@
 </head>
 <body ng-app="ferretList">
 	<div ng-controller="MainCtrl">
+		<script type="text/ng-template" id="viewItem.html">
+			<div class="modal-header">
+				<h3 class="modal-title">{{ item.item }}</h3>
+			</div>
+			<div class="modal-body">
+			<p>Seller: {{item.seller}}</p>
+			<p>Price: {{item.price | currency}}</p>
+			<p>Location: {{item.location}}</p>
+			<p>Contact Info: {{item.contactInfo}}</p>
+			<p>Category: {{item.category}}</p>
+			<p>Date: {{item.date}}</p>
+			<p>Condition: {{item.condition}}</p>
+			<p>{{item.description}}</p>
+			<img ng-src="{{item.photo}}" style="width: 300px"/>
+			</div>
+		</script>
 		<div class="row page-header">
 			<div class="col-md-3">
 				<h1>FerretList</h1>
 			</div>
 		</div>
 		<div class="container">
-			<span class="itemSpan" ng-repeat="item in items | orderBy : 'date'" style="cursor:pointer" ng-click="openModal(item)">
-				<img ng-src="{{ item.photo }}" alt="Image Not Found" >
+			<span class="itemSpan" ng-repeat="item in items | orderBy : 'date'" style="cursor:pointer">
+				<img ng-src="{{ item.photo }}" ng-click="open(item)" alt="Image Not Found" >
 				<div class="itemPrice text-center">{{ item.price | currency}}</div></a>
 				<div class="itemLocation text-center">{{ item.location }}</div></a>
 			</span>
