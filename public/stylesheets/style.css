@@ -14,3 +14,14 @@ h1 {
 .page-header {
   background: #CC0000;
 }
+
+.wide-input {
+  width: 300px;
+}
+
+.fixed-button {
+  position: fixed;
+  float: right;
+  bottom: 20px;
+  right: 20px;
+}
