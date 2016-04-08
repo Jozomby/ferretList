@@ -6,3 +6,8 @@ price: if listed price is below or equal to query, search will accept
 category: matches category
 condition: matches condition
 location: matches location
+
+
+
+add item via curl
+"seller=Me&price=60&location=here&item=this&contactInfo=yell&category=none&date=today&condition=old&description=what?&photo=n/a"
