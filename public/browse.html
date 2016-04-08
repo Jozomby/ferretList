@@ -18,9 +18,9 @@
 		</div>
 		<div class="container">
 			<span class="itemSpan" ng-repeat="item in items | orderBy : 'date'" style="cursor:pointer" ng-click="openModal(item)">
-				<img ng-src="{{getImageUrl(item.photo}]}" alt="Image Not Found" >
-				<div class="itemPrice">{{ item.price }}</div></a>
-				<div class="itemLocation">{{ item.location }}</div></a>
+				<img ng-src="{{ item.photo }}" alt="Image Not Found" >
+				<div class="itemPrice text-center">{{ item.price | currency}}</div></a>
+				<div class="itemLocation text-center">{{ item.location }}</div></a>
 			</span>
 		</div>
 	</div>
